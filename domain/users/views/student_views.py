@@ -3,4 +3,4 @@ from domain.users.models.students import StudentProfile
 
 class StudentListView(ListView):
     model = StudentProfile
-    template_name = "students/student_list.html"
+    template_name = "domain/users/students/student_list.html"

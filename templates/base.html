@@ -54,6 +54,7 @@
 
     <!-- Grid Css -->
     <link rel="stylesheet" href="{% static 'assets/libs/gridjs/theme/mermaid.min.css' %}">
+    {% block styling %}{% endblock %}
 
 </head>
 
@@ -135,7 +136,7 @@
         <script src="{% static 'assets/js/custom-switcher.min.js' %}"></script>
         <!-- Custom JS -->
         <script src="{% static 'assets/js/custom.js' %}"></script>
-
+        {% block scripts %}{% endblock %}
 </body>
 
 </html>
