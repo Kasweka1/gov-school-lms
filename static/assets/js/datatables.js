@@ -48,13 +48,27 @@ $(function (e) {
     // file export datatable
     $('#file-export').DataTable({
         dom: 'Bfrtip',
+          responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal({
+                    header: function (row) {
+                        var data = row.data();
+                        return data[0] + ' ' + data[1];
+                    }
+                }),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                    tableClass: 'table'
+                })
+            }
+        },
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+         'pdf', 'excel', 'print'
         ],
         language: {
             searchPlaceholder: 'Search...',
             sSearch: '',
         },
+        "pageLength": 20,
         scrollX: true
     });
     // file export datatable
