@@ -1,0 +1,20 @@
+<div class="col-lg-3 col-md-6 col-sm-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h6 class="text-muted mb-1">{{ title }}</h6>
+                    <h2 class="mb-0 fw-semibold">{{ value }}</h2>
+
+                    {% if subtitle %}
+                        <small class="text-muted">{{ subtitle }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="ms-auto">
+                    <i class="{{ icon }} display-6 {{ icon_color|default:'text-primary' }} opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

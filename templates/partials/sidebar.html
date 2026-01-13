@@ -39,19 +39,20 @@
                 <!-- End::slide -->
 
                 <!-- Start::slide__category -->
+
                 <li class="slide__category"><span class="category-name">User Management</span></li>
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="fe fe-slack side-menu__icon"></i>
+                        <i class="fe fe-users side-menu__icon"></i>
                         <span class="side-menu__label">Students</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
                     <ul class="slide-menu child1">
                         <li class="slide">
-                            <a href="#" class="side-menu__item">View Students</a>
+                            <a href="{% url 'user:student_list' %}" class="side-menu__item">View Students</a>
                         </li>
                         <li class="slide">
                             <a href="#" class="side-menu__item">Add Student</a>
@@ -63,7 +64,7 @@
                 </li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="fe fe-slack side-menu__icon"></i>
+                        <i class="fe fe-users side-menu__icon"></i>
                         <span class="side-menu__label">Parents</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
@@ -81,7 +82,7 @@
                 </li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="fe fe-slack side-menu__icon"></i>
+                        <i class="fe fe-user-check side-menu__icon"></i>
                         <span class="side-menu__label">Staff</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
@@ -98,11 +99,11 @@
                     </ul>
                 </li>
                 <!-- End::slide -->
-                <li class="slide__category"><span class="category-name">Academics</span></li>
+                  <li class="slide__category"><span class="category-name">Academics</span></li>
                 
                    <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="fe fe-slack side-menu__icon"></i>
+                        <i class="fe fe-bell side-menu__icon"></i>
                         <span class="side-menu__label">Classes</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
@@ -117,7 +118,7 @@
                 </li>
                    <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="fe fe-slack side-menu__icon"></i>
+                        <i class="fe fe-book-open side-menu__icon"></i>
                         <span class="side-menu__label">Subjects</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>

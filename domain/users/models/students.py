@@ -5,9 +5,15 @@ from django.contrib.auth.models import User
 
 
 class StudentProfile(models.Model):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     middle_name = models.CharField(max_length=30, null=True, blank=True)
     student_number = models.CharField(max_length=30, unique=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     examination_number = models.CharField(max_length=50, null=True, blank=True)
     enrollment_date = models.DateField(auto_now_add=True)
