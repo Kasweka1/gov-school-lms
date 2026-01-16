@@ -13,7 +13,7 @@
 <!-- PAGE-HEADER -->
 {% include 'partials/components/page-header.html' with page_title="Students" breadcrumb_item="User Management" %}
 <!-- PAGE-HEADER END -->
- 
+
 <div class="row">
     {% include 'partials/components/stat_card.html' with title="Total Students"
     value=335 subtitle="Active: 340" icon="bi bi-people-fill"
@@ -69,7 +69,7 @@
                             <td>{{ student.enrollment_date }}</td>
                            
                             <td>Not Assigned</td>
-                            <td><a href="{% url 'user:student_detail' student.pk %}"><i class="bi bi-eye" style="font-size: 1.5rem;"></i></a></td>
+                            <td><a href="{% url 'user:student_detail' student.student_number %}"><i class="bi bi-eye" style="font-size: 1.5rem;"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

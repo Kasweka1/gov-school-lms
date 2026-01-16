@@ -2,6 +2,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from datetime import date
 
 
 class StudentProfile(models.Model):
@@ -21,6 +22,15 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.get_full_name()} - {self.student_number}"
+    
+    def age(self):
+        if not self.date_of_birth:
+            return None
+             
+        if self.date_of_birth:
+            today = date.today()
+            return today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+        return None
 
 
 class ParentProfile(models.Model):
