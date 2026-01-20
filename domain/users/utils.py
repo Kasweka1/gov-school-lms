@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models import Max
-from domain.users.models.students import StudentProfile
+
 
 # Utility function to generate unique usernames for students
 
@@ -26,6 +26,8 @@ def generate_student_password(first_name: str, last_name: str) -> str:
 # Utility function to generate unique student numbers
 
 def generate_student_number() -> str:
+    # Importing here to avoid circular imports
+    from domain.users.models.students import StudentProfile
     year = timezone.now().year
     prefix = f"STU-{year}-"
 
@@ -44,3 +46,14 @@ def generate_student_number() -> str:
         next_number = 1
 
     return f"{prefix}{next_number:05d}"
+
+
+# Utility function to define upload path for student images
+
+def student_image_upload_path(instance, filename) -> str:
+    """
+    instance  -> StudentProfile instance
+    filename  -> original uploaded filename
+    """
+    ext = filename.split('.')[-1]  # jpg / png
+    return f"student_images/{instance.student_number}-image.{ext}"

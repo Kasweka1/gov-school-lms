@@ -30,16 +30,17 @@
                 </span>
             </div>
             <div class="card-body">
-                <form class="row g-3 mt-0">
+                <form method="POST" action="{% url 'user:student_create' %}" enctype="multipart/form-data" class="row g-3 mt-0" id="studentForm">
+                    {% csrf_token %}
                     <div class="col-md-6">
                         <label class="form-label">First Name <span class="text-danger">*</span></label>
-                       {{ form.first_name }}
-                       {{ form.first_name.errors }}
+                        {{ form.first_name }}
+                        {{ form.first_name.errors }}
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Last Name <span class="text-danger">*</span></label>
-                                {{ form.last_name }}
-                                {{ form.last_name.errors }}
+                        {{ form.last_name }}
+                        {{ form.last_name.errors }}
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Middle Name</label>
@@ -72,8 +73,10 @@
                         {{ form.examination_number.errors }}
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Upload Student Photo <span class="text-danger">*</span></label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label for="formFile" class="form-label">Upload Student Photo <span
+                                class="text-danger">*</span></label>
+                        {{ form.image }}
+                        {{ form.image.errors }}
                     </div>
                     <div class="col-12">
                         <div class="form-check">
@@ -101,13 +104,16 @@
 
             </div>
             <div class="card-body">
-                 Kindly take note of the following information when adding a new student:
+                Kindly take note of the following information when adding a new student:
                 <ol>
                     <li>Fields marked with an asterisk (<span class="text-danger">*</span>) are required.</li>
                     <li>The Image upload is required as important IDs like examination ID will use photo uploaded.</li>
                     <li>The student number will be generated automatically.</li>
-                    <li>The Student username is generated automatically and will be used for login purposes. Default username is <em>firstname-lastname</em>, Example is <b>chimweso-mukoko</b></li>
-                    <li>The Student password will be generated automatically. Default password is <em>FirstName@CurrentYear</em>, Example is <b>ChimwesoMukoko@2026</b></li>
+                    <li>The Student username is generated automatically and will be used for login purposes. Default
+                        username is <em>firstname-lastname</em>, Example is <b>chimweso-mukoko</b></li>
+                    <li>The Student password will be generated automatically. Default password is
+                        <em>FirstName@CurrentYear</em>, Example is <b>ChimwesoMukoko@2026</b>
+                    </li>
                     <li>Ensure all information is correct before submitting the form.</li>
                 </ol>
             </div>
@@ -117,5 +123,47 @@
     </div>
 </div>
 {% endblock%}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("studentForm");
+
+        form.addEventListener("submit", function (e) {
+            let isValid = true;
+
+            // Required fields (Django field IDs)
+            const requiredFields = [
+                "id_first_name",
+                "id_last_name",
+                "id_date_of_birth",
+                "id_gender",
+                "id_enrollment_date",
+            ];
+
+            requiredFields.forEach(id => {
+                const field = document.getElementById(id);
+                if (!field || field.value.trim() === "") {
+                    field.classList.add("is-invalid");
+                    isValid = false;
+                } else {
+                    field.classList.remove("is-invalid");
+                }
+            });
+
+            // Checkbox validation
+            const checkbox = document.getElementById("gridCheck3");
+            if (!checkbox.checked) {
+                checkbox.classList.add("is-invalid");
+                isValid = false;
+            } else {
+                checkbox.classList.remove("is-invalid");
+            }
+
+            if (!isValid) {
+                e.preventDefault(); // stop form submission
+            }
+        });
+    });
+</script>
+
 
 {% block scripts %}{% endblock %}

@@ -11,7 +11,8 @@ class StudentCreateform(forms.Form):
         max_length=150,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "First name"
+            "placeholder": "First name",
+            "required":  True
         })
     )
 
@@ -19,7 +20,8 @@ class StudentCreateform(forms.Form):
         max_length=150,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Last name"
+            "placeholder": "Last name",
+            "required":  True
         })
     )
 
@@ -46,7 +48,8 @@ class StudentCreateform(forms.Form):
         required=False,
         widget=forms.DateInput(attrs={
             "class": "form-control",
-            "type": "date"
+            "type": "date",
+            "required":  True
         })
     )
 
@@ -54,7 +57,8 @@ class StudentCreateform(forms.Form):
         choices=StudentProfile.GENDER_CHOICES,
         required=False,
         widget=forms.Select(attrs={
-            "class": "form-select"
+            "class": "form-select",
+            "required":  True
         })
     )
 
@@ -71,6 +75,15 @@ class StudentCreateform(forms.Form):
         required=False,
         widget=forms.DateInput(attrs={
             "class": "form-control",
-            "type": "date"
+            "type": "date",
+            "required":  True
+        })
+    )
+
+    image = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            "class": "form-control",
+            "type": "file",
         })
     )

@@ -23,7 +23,11 @@
             <div class="card-body border-bottom">
                 <div class="d-sm-flex  main-profile-cover">
                     <span class="avatar avatar-xxl online me-3">
+                        {% if student.image %}
+                        <img src="{{ student.image.url }}" alt="" class="avatar avatar-xxl">
+                        {% else %}
                         <img src="{% static 'assets/images/faces/5.jpg' %}" alt="" class="avatar avatar-xxl">
+                        {% endif %}
                     </span>
                     <div class="flex-fill main-profile-info my-auto">
                         <h5 class="fw-semibold mb-1 ">{{student.user.first_name}} {{student.middle_name}} {{student.user.last_name}}</h5>
@@ -68,7 +72,12 @@
                             <div class="me-2 fw-semibold">
                                 Email :
                             </div>
-                            <span class="fs-12 text-muted">{{student.user.email}}</span>
+                            <span class="fs-12 text-muted">
+                                {% if student.user.email %}
+                                {{student.user.email}}</span>
+                                {% else %}
+                                N/A
+                                {% endif %}
                         </div>
                     </li>
                     <li class="list-group-item border-0">

@@ -49,5 +49,6 @@ class StudentCreateView(FormView):
             date_of_birth=form.cleaned_data["date_of_birth"],
             examination_number=form.cleaned_data["examination_number"],
             enrollment_date=form.cleaned_data["enrollment_date"],
+            image=form.cleaned_data["image"],
         )
         return super().form_valid(form)
