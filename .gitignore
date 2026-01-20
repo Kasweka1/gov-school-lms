@@ -94,7 +94,6 @@ ENV/
 
 .DS_Store
 *.sqlite3
-media/
 *.pyc
 *.db
 *.pid
@@ -105,3 +104,9 @@ media/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
+
+# Ignore media files
+media/*
+
+# But NOT .gitkeep
+!media/**/.gitkeep
