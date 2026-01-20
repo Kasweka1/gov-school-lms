@@ -105,8 +105,6 @@ ENV/
 # !**/migrations
 # !**/migrations/__init__.py
 
-# Ignore media files
-media/*
-
-# But NOT .gitkeep
-!media/**/.gitkeep
+# Ignore only root media folder
+/media/*
+!/media/**/.gitkeep
